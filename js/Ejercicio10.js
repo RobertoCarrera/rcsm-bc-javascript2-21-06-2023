@@ -15,8 +15,11 @@ let person = {
 };
 // Creamos la función que recibe el objeto
 const fullName = (personObject) => {
-// Y que sólo muestra el nombre y apellidos del objeto recibido
-    console.log(personObject.name+" "+personObject.surname);
+
+// Y que sólo muestra el nombre y apellidos del objeto recibido, concatenados
+    let completeName = personObject.name.concat(" "+personObject.surname);
+
+    console.log(completeName);
 }
 
 fullName(person);

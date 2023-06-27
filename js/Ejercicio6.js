@@ -2,36 +2,34 @@
 // divida en otros dos arrays: uno para pares y otro para impares. 
 // A continuación, saca por consola ambos arrays resultantes concatenados.
 
-// Creo un array en el que almaceno los números a ordenar
-let randomNumbers = [];
-// Los genero, cada vez, aleatoriamente. 10 diferentes de 1-10
+let numbers = [];
+
+// Genero un array de 10 números entre el 1 y el 50
 for (let i = 0; i < 10; i++) {
     
-    randomNumbers[i] = Math.floor(Math.random()*10)+1;
+    numbers[i] = Math.floor(Math.random()*50)+1
 }
+// Lo muestro para que luego se vea la diferencia con la concatenación
+console.log("Aquí el array aleatoriamente generado: "+numbers);
+// Aquí la función que los separa y concatena. Recibe un array
+const separateNumbers = (newArray) => {
+// Creo un array para cada uno de los números: pares e impares
+    let oddNumbers = [];
+    let evenNumbers = [];
+// Recorro el array que recibe la función
+    for (let i = 0; i < newArray.length; i++) {
+        // Si son pares, los pusheo en un array de pares
+        if (newArray[i]%2 == 0) {
+            
+            evenNumbers.push(newArray[i]);
+            // Y sino, en el de impares
+        }else{
 
-// Aquí empieza la función que los separa
-const divideNumbers = (arrayNumbers) => {
-// Creo las variables necesarias. 2 arrays que almacenan los números
-// Y 2 contadores que son independientes a cada array pq sino crearíamos
-// saltos diferentes entre arrays 
-    let evenNumbers = [], oddNumbers = [];
-    let counterEven = 0, counterOdd = 0;
-// Recorremos el array de los números aleatorios
-    for (let i = 0; i < arrayNumbers.length; i++) {
-        // Si son pares, se van al array de pares y el contador suma 1
-        if (arrayNumbers[i] %2 == 0) {
-            evenNumbers[counterEven] = arrayNumbers[i];
-            counterEven++;
-        }
-        // Si no lo son, van al de impares y el contador impar suma 1
-        else{
-            oddNumbers[counterOdd] = arrayNumbers[i];
-            counterOdd++;
+            oddNumbers.push(newArray[i]);
         }
     }
-    // Mostramos los arrays separados
-    console.log("Los arrays separados son los siguientes: \nPares "+oddNumbers+" \nImpares: "+evenNumbers);
+    // Aquí muestro, por consola, los arrays concatenados
+    console.log("Aquí los arrays separados y concatenados: "+evenNumbers.concat(oddNumbers));
 }
-// Llamamos a la función
-divideNumbers(randomNumbers);
+
+separateNumbers(numbers);
